@@ -18,7 +18,8 @@ def create_app(config=None, app_name=None):
     if app_name is None:
         app_name = DEFAULT_APPNAME
 
-    app = Flask(app_name, static_folder=None)
+    #app = Flask(app_name, static_folder=None)
+    app = Flask(__name__)
 
     configure_app(app, config)
     configure_db(app)
