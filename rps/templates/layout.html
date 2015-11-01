@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+{%- block navbar %}{% endblock %}
+<div class="container">
+  {% block page_content %}{% endblock %}
+</div>
+{%- block footer %}{% endblock %}
+{% endblock %}
+
+{# vim: ft=jinja:sw=2
+#}

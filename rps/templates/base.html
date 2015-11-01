@@ -1,28 +1,29 @@
 <!doctype html>
-<html class="no-js" lang="es-ar">
+<html lang="es-ar">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>{% block title %}Río Plomo{% endblock %}</title>
     <meta name="description" content="">
     <meta name="author" content="Augusto Roccasalva">
-
+    <title>{% block title %}Río Plomo{% endblock %}</title>
     <link href="{{ static('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ static('css/bootstrap-theme.min.css') }}" rel="stylesheet">
     <link href="{{ static('css/main.css') }}" rel="stylesheet">
+    {#- page-specifig css style #}
+    {%- block css %}{% endblock %}
   </head>
 
   <body>
-    {% block main %}
-    <h1>Hello World</h1>
-    <p>This is a base bootstrap 3 template!</p>
-    {% endblock %}
+
+    {% block content %}<h1>Base template</h1>{% endblock %}
 
     <script src="{{ static('js/vendor/jquery-1.11.3.min.js') }}"></script>
     <script src="{{ static('js/vendor/bootstrap.min.js') }}"></script>
     <script src="{{ static('js/plugins.js') }}"></script>
     <script src="{{ static('js/main.js') }}"></script>
+    {#- page-specific JavaScript block  #}
+    {%- block js %}{% endblock %}
   </body>
 </html>
 {# vim:sw=2:ft=jinja
