@@ -9,7 +9,7 @@ frontend = Blueprint('fontend', __name__)
 
 @frontend.route('/')
 def index():
-    return render_template('base.html')
+    return render_template('wizard.html')
 
 
 ## Admin

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ static('css/gsdk-base.css') }}">
+{% endblock %}
+
+{% block js %}
+<script src="{{ static('js/jquery.bootstrap.wizard.js') }}"></script>
+<script src="{{ static('js/jquery.validate.min.js') }}"></script>
+<script src="{{ static('js/wizard.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="image-container set-full-height" style="background-image: url('{{ static('img/wizard-city.jpg') }}')">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="wizard-container">
+          <div class="card wizard-card ct-wizard-blue" id="wizardProfile">
+            <form action="" method="">
+
+              <div class="wizard-header">
+                <h3><b>DATOS</b> DEL ASISTENTE<br><small>Esta informacion nos permitirá conocer más acerca de usted.</small></h3>
+              </div>
+
+              <ul>
+                <li><a href="#about" data-toggle="tab">Documento</a></li>
+                <li><a href="#account" data-toggle="tab">Personal</a></li>
+                <li><a href="#address" data-toggle="tab">Profesional</a></li>
+              </ul>
+
+              <div class="tab-content">
+                <div class="tab-pane" id="about">
+                  <div class="row">
+                    <h4 class="info-text">Comencemos con información básica</h4>
+                    <div class="col-sm-8 col-sm-offset-2">
+                      <div class="form-group">
+                        <label>DNI</label>
+                        <input name="dni" class="form-control" placeholder="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wizard-footer">
+                <div class="pull-right">
+                  <input type="button" class="btn btn-next btn-fill btn-primary btn-wd btn-sm" name="next" value="Siguente" />
+                  <input type="button" class="btn btn-finish btn-fill btn-primary btn-wd btn-sm" name="finish" value="Terminar" />
+                </div>
+                <div class="pull-left">
+                  <input type="button" class="btn btn-previous btn-fill btn-default btn-wd btn-sm" name="previous" value="Anterior" />
+                </div>
+                <div class="clearfix"></div>
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--div class="footer">
+    <div class="container">Río Plomo</div>
+  </div-->
+</div>
+{% endblock %}
+
+{# vim: ft=jinja:sw=2
+#}
