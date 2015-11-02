@@ -25,19 +25,50 @@
               </div>
 
               <ul>
-                <li><a href="#about" data-toggle="tab">Documento</a></li>
-                <li><a href="#account" data-toggle="tab">Personal</a></li>
-                <li><a href="#address" data-toggle="tab">Profesional</a></li>
+                <li><a href="#documento" data-toggle="tab">Documento</a></li>
+                <li><a href="#personal" data-toggle="tab">Personal</a></li>
+                <li><a href="#profesional" data-toggle="tab">Profesional</a></li>
               </ul>
 
               <div class="tab-content">
-                <div class="tab-pane" id="about">
+                <div class="tab-pane" id="documento">
                   <div class="row">
                     <h4 class="info-text">Comencemos con información básica</h4>
                     <div class="col-sm-8 col-sm-offset-2">
                       <div class="form-group">
                         <label>DNI</label>
                         <input name="dni" class="form-control" placeholder="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="personal">
+                  <div class="row">
+                    <h4 class="info-text">Algo de información personal</h4>
+                    <div class="col-sm-5 col-sm-offset-1">
+                      <div class="form-group">
+                        <input name="firstname" type="text" class="form-control" placeholder="Nombre" />
+                      </div>
+                    </div>
+                    <div class="col-sm-5">
+                      <div class="form-group">
+                        <input name="lastname" type="text" class="form-control" placeholder="Apellido" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                      <div class="form-group">
+                        <label>Teléfono</label>
+                        <input name="phone" type="tel" class="form-control" placeholder="Teléfono" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                      <div class="form-group">
+                        <label>E-mail</label>
+                        <input name="email" type="email" class="form-control" placeholder="E-mail" />
                       </div>
                     </div>
                   </div>
@@ -64,7 +95,7 @@
   </div>
 
   <!--div class="footer">
-    <div class="container">Río Plomo</div>
+  <div class="container">Río Plomo</div>
   </div-->
 </div>
 {% endblock %}
