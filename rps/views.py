@@ -8,8 +8,12 @@ from flask import Blueprint, url_for, render_template
 frontend = Blueprint('fontend', __name__)
 
 @frontend.route('/')
-def index():
+def wizard():
     return render_template('wizard.html')
+
+@frontend.route('/_checknew')
+def new_assitant():
+    return 'Work'
 
 
 ## Admin
