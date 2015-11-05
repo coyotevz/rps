@@ -3,7 +3,7 @@
 import locale
 locale.setlocale(locale.LC_ALL, '')
 
-from flask import Flask, request, url_for, render_template
+from flask import Flask, request, url_for, render_template, redirect
 
 from flask.ext.sqlalchemy import SQLAlchemy
 
@@ -63,35 +63,33 @@ class Step3Form(Form):
 
     matricula = StringField('Matricula')
 
-class VerifyForm(Form):
-    dni = HiddenField()
-    firstname = HiddenField()
-    lastname = HiddenField()
-    email = HiddenField()
-    twitter = HiddenField()
-    matricula = HiddenField()
-
 ## Views
 
 @app.route('/')
-@app.route('/step1')
+@app.route('/step1', methods=['GET', 'POST'])
 def step1():
     form = Step1Form()
+    if form.validate_on_submit():
+        return redirect('step2', code=307)
     return render_template('step1.html', form=form)
 
-@app.route('/step2', methods=['POST'])
+@app.route('/step2', methods=['GET', 'POST'])
 def step2():
     form = Step2Form()
+    if form.validate_on_submit():
+        return redirect('step3', code=307)
     return render_template('step2.html', form=form)
 
-@app.route('/step3', methods=['POST'])
+@app.route('/step3', methods=['GET', 'POST'])
 def step3():
     form = Step3Form()
+    if form.validate_on_submit():
+        return redirect('verify', code=307)
     return render_template('step3.html', form=form)
 
 @app.route('/verify', methods=['POST'])
 def verify():
-    form = VerifyForm()
+    form = Step3Form()
     return render_template('verify.html', form=form)
 
 @app.route('/finish', methods=['POST'])
