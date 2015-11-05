@@ -3,36 +3,107 @@
 import locale
 locale.setlocale(locale.LC_ALL, '')
 
+from flask import Flask, request, url_for, render_template
 
-from flask import Flask, request, make_response
+from flask.ext.sqlalchemy import SQLAlchemy
 
-from rps.models import configure_db
-from rps.views import configure_views
+from wtforms import StringField, HiddenField
+from wtforms.validators import DataRequired
+from flask.ext.wtf import Form
+from flask.ext.wtf.html5 import EmailField
 
 
-DEFAULT_APPNAME = 'rioplomo-sorteo'
+## Create app & configure
+
+app = Flask(__name__)
+try:
+    app.config.from_object('localconfig.LocalConfig')
+except ImportError:
+    app.config.from_object('rps.config.DevelopmentConfig')
 
 
-def create_app(config=None, app_name=None):
+## Models
+db = SQLAlchemy(app)
 
-    if app_name is None:
-        app_name = DEFAULT_APPNAME
+class Customer(db.Model):
+    __tablename__ = 'customer'
 
-    #app = Flask(app_name, static_folder=None)
-    app = Flask(__name__)
+    id = db.Column(db.Integer, primary_key=True)
+    dni = db.Column(db.Integer, nullable=False, unique=True)
 
-    configure_app(app, config)
-    configure_db(app)
-    configure_views(app)
+    firstname = db.Column(db.String, nullable=False)
+    lastname = db.Column(db.String, nullable=False)
+    email = db.Column(db.String)
+    phone = db.Column(db.String)
+    twitter = db.Column(db.String)
 
-    return app
+    matricula = db.Column(db.String)
 
-def configure_app(app, config=None):
 
-    if config is not None:
-        app.config.from_object(config)
-    else:
-        try:
-            app.config.from_object('localconfig.LocalConfig')
-        except ImportError:
-            app.config.from_object('rps.config.DevelopmentConfig')
+## Forms
+
+class Step1Form(Form):
+    dni = StringField('DNI', validators=[DataRequired()])
+
+
+class Step2Form(Form):
+    dni = HiddenField()
+
+    firstname = StringField('Nombre', validators=[DataRequired()])
+    lastname = StringField('Apellido', validators=[DataRequired()])
+    email = EmailField('E-mail')
+    twitter = StringField('Twitter')
+
+class Step3Form(Form):
+    dni = HiddenField()
+    firstname = HiddenField()
+    lastname = HiddenField()
+    email = HiddenField()
+    twitter = HiddenField()
+
+    matricula = StringField('Matricula')
+
+class VerifyForm(Form):
+    dni = HiddenField()
+    firstname = HiddenField()
+    lastname = HiddenField()
+    email = HiddenField()
+    twitter = HiddenField()
+    matricula = HiddenField()
+
+## Views
+
+@app.route('/')
+@app.route('/step1')
+def step1():
+    form = Step1Form()
+    return render_template('step1.html', form=form)
+
+@app.route('/step2', methods=['POST'])
+def step2():
+    form = Step2Form()
+    return render_template('step2.html', form=form)
+
+@app.route('/step3', methods=['POST'])
+def step3():
+    form = Step3Form()
+    return render_template('step3.html', form=form)
+
+@app.route('/verify', methods=['POST'])
+def verify():
+    form = VerifyForm()
+    return render_template('verify.html', form=form)
+
+@app.route('/finish', methods=['POST'])
+def finish():
+    return render_template('finish.html')
+
+## Helpers
+
+@app.context_processor
+def template_helpers():
+
+    def static(filename):
+        return url_for('static', filename=filename)
+
+    return dict(static=static)

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="post" action="/verify" autocomplete="off">
+
+  {{ form.hidden_tag() }}
+
+  {{ form.matricula.label }}
+  {{ form.matricula(size=10, autofocus=True) }}
+
+  <input type="submit" name="submit" value="Finalizar" id="submit">
+  
+</form>
+{% endblock %}
+
+{# vim: ft=jinja:sw=2
+#}

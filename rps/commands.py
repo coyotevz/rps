@@ -8,11 +8,9 @@
 from flask.ext.script import Manager, Shell, Command, Option, prompt_bool
 from flask.ext.script.commands import Clean, ShowUrls
 
-from rps.application import create_app
-from rps.models import db
+from rps.application import app, db
 
-
-manager = Manager(create_app)
+manager = Manager(app)
 
 @manager.command
 def initdb():
@@ -30,11 +28,10 @@ def dropdb():
         print("All tables dropped")
 
 def shell_make_context():
-    from flask import current_app
     from datetime import datetime
     from decimal import Decimal
     return dict(
-        app=current_app,
+        app=app,
         db=db,
         Decimal=Decimal,
         datetime=datetime,
@@ -60,7 +57,6 @@ class GunicornServer(Command):
         )
 
     def run(self, host, port, workers):
-        from flask import current_app
         try:
             from gunicorn import version_info
         except ImportError:
@@ -80,7 +76,7 @@ class GunicornServer(Command):
                     }
 
                 def load(self):
-                    return current_app
+                    return app
 
             FlaskApplication().run()
 

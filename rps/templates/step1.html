@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="post" action="/step2" autocomplete="off">
+
+  {{ form.hidden_tag() }}
+  {{ form.dni.label }}
+  {{ form.dni(size=10, autofocus=True) }}
+
+  <input type="submit" name="submit" value="Siguente" id="submit">
+</form>
+{% endblock %}
+
+{# vim: ft=jinja:sw=2
+#}

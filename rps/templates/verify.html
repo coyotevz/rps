@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="post" action="/finish">
+
+  {{ form.hidden_tag() }}
+
+  <p>DNI: {{ form.dni.data }}</p>
+  <p>Nombre: {{ form.firstname.data }}</p>
+  <p>Apellido: {{ form.lastname.data }}</p>
+  <p>Email: {{ form.email.data }}</p>
+
+  <input type="submit" name="submit" value="Imprimir Cupon" id="submit">
+
+</form>
+{% endblock %}
+
+{# vim: ft=jinja:sw=2
+#}
