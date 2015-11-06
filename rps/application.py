@@ -45,7 +45,7 @@ class Customer(db.Model):
 ## Forms
 
 class Step1Form(Form):
-    dni = StringField('DNI', validators=[DataRequired()])
+    dni = StringField('DNI / LE / LC', validators=[DataRequired()])
 
 
 class Step2Form(Form):

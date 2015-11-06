@@ -5,36 +5,53 @@
 
   {{ form.hidden_tag() }}
 
-  <div class="form-group">
-    {{ form.firstname.label(class_='col-sm-2 control-label') }}
-    <div class="col-sm-10">
-      {{ form.firstname(size=20, required=True, autofocus=True, class_='form-control', placeholder='Nombre') }}
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="form-group form-group-lg">
+        {{ form.firstname.label(class_='col-sm-2 control-label') }}
+        <div class="col-sm-10">
+          {{ form.firstname(size=20, required=True, autofocus=True, class_='form-control', placeholder='Nombre') }}
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="form-group">
-    {{ form.lastname.label(class_='col-sm-2 control-label') }}
-    <div class="col-sm-10">
-      {{ form.lastname(size=20, required=True, class_='form-control', placeholder='Apellido') }}
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="form-group form-group-lg">
+        {{ form.lastname.label(class_='col-sm-2 control-label') }}
+        <div class="col-sm-10">
+          {{ form.lastname(size=20, required=True, class_='form-control', placeholder='Apellido') }}
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="form-group">
-    {{ form.email.label(class_='col-sm-2 control-label') }}
-    <div class="col-sm-10">
-      {{ form.email(class_='form-control', placeholder='Email') }}
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="form-group form-group-lg">
+        {{ form.email.label(class_='col-sm-2 control-label') }}
+        <div class="col-sm-10">
+          {{ form.email(class_='form-control', placeholder='Email') }}
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="form-group">
-    {{ form.twitter.label(class_='col-sm-2 control-label') }}
-    <div class="col-sm-10">
-      {{ form.twitter(class_='form-control', placeholder='Twitter') }}
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="form-group form-group-lg">
+        {{ form.twitter.label(class_='col-sm-2 control-label') }}
+        <div class="col-sm-10">
+          {{ form.twitter(class_='form-control', placeholder='Twitter') }}
+        </div>
+      </div>
     </div>
   </div>
 
-  <input type="submit" name="submit" value="Siguente" id="submit">
-  <button class="btn btn-default" type="submit">Siguente</button>
+  <div class="row">
+    <button class="btn btn-default btn-lg center-block" type="submit">Siguiente</button>
+  </div>
 </form>
 {% endblock %}
 

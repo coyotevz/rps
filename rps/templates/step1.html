@@ -5,13 +5,16 @@
 
   {{ form.hidden_tag() }}
 
-  <div class="form-group">
-  {{ form.dni.label }}
-  {{ form.dni(size=10, class_='form-control', autofocus=True) }}
+  <div class="row dni">
+    <div class="form-group col-sm-6 col-sm-offset-3">
+      {{ form.dni.label }}
+      {{ form.dni(size=10, class_='form-control', autofocus=True) }}
+    </div>
   </div>
 
-  <button class="btn btn-default" type="submit">Siguiente</button>
-  <input type="submit" name="submit" value="Siguente" id="submit">
+  <div class="row">
+    <button class="btn btn-default btn-lg center-block" type="submit">Siguiente</button>
+  </div>
 </form>
 {% endblock %}
 

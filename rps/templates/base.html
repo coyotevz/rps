@@ -15,7 +15,12 @@
 
   <body>
 
-    {% block content %}<h1>Base template</h1>{% endblock %}
+    <div class="container">
+      <div class="logo-container">
+        <img class="img-responsive center-block" src="{{ static('img/logo.png') }}" /><!-- width="416" height="102" alt="Logo" /-->
+      </div>
+      {% block content %}<h1>Base template</h1>{% endblock %}
+    </div>
 
     <script src="{{ static('js/jquery-1.11.3.min.js') }}"></script>
     <!--script src="{{ static('js/bootstrap.min.js') }}"></script-->
