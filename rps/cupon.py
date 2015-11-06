@@ -21,14 +21,15 @@ class Cupon(fpdf.FPDF):
     def set_customer(self, customer):
         self.customer = customer
 
-    def print(self):
+    def print(self, run_dry=False):
         assert self.customer is not None
         # 1. Create PDF
         self._create_pdf()
         # 2. Save PDF
         self._save_pdf()
         # 3. Print with lp
-        return self._print_lp()
+        if not run_dry:
+            return self._print_lp()
 
     def _create_pdf(self):
         self.add_page()

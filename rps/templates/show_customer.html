@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-center">
+  <h1>La persona ya se encuentra registrada</h1>
+</div>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <dl id="verify-data" class="dl-horizontal">
+      <dt>DNI:</dt>
+      <dd>{{ customer.dni }}</dd>
+      <dt>Nombre:</dt>
+      <dd>{{ customer.firstname }}</dd>
+      <dt>Apellido:</dt>
+      <dd>{{ customer.lastname }}</dd>
+      {% if customer.phone %}
+      <dt>Teléfono:</dt>
+      <dd>{{ customer.phone }}</dd>
+      {% endif %}
+      {% if customer.email %}
+      <dt>Email:</dt>
+      <dd>{{ customer.email }}</dd>
+      {% endif %}
+    </dl>
+  </div>
+</div>
+
+<div class="row">
+  <div class="text-center">
+    <a href="/" id="back" class="btn btn-default btn-lg">Volver a comenzar</a>
+  </div>
+</div>
+{% endblock %}
+
+{# vim: ft=jinja:sw=2
+#}

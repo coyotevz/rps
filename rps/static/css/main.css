@@ -30,3 +30,11 @@ input[name="dni"] {
 #verify-data {
   font-size: 30px;
 }
+
+#back {
+  margin-top: 15px;
+}
+
+#esp {
+  font-size: 20px;
+}

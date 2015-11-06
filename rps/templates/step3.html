@@ -1,17 +1,41 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form method="post" action="/step3" autocomplete="off">
+<form method="post" action="/verify" autocomplete="off" id="esp">
 
   {{ form.hidden_tag() }}
 
-  {{ form.matricula.label }}
-  {{ form.matricula(size=10, autofocus=True) }}
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      {{ form.especialidad.label }}
+      {% for esp in form.especialidad %}
+      <div class="checkbox">
+        <label>
+          {{ esp() }}
+          {{ esp.label.text }}
+        </label>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!--div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    {{ form.matricula.label }}
+    {{ form.matricula(size=10, autofocus=True) }}
+  </div>
+  </div-->
 
   <div class="row">
     <button class="btn btn-default btn-lg center-block" type="submit">Siguiente</button>
   </div>
-  
+
+  <div class="row">
+    <div class="text-center">
+      <a href="/" id="back" class="btn btn-default btn-lg">Volver a comenzar</a>
+    </div>
+  </div>
+
 </form>
 {% endblock %}
 
