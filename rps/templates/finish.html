@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Imprimiendo cupón #1</h1>
+<h1>Imprimiendo cupón #{{ "%04d"|format(customer.id) }}</h1>
 <a href="/">Volver a comenzar</a>
 {% endblock %}
 

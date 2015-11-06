@@ -12,6 +12,8 @@ from wtforms.validators import DataRequired
 from flask.ext.wtf import Form
 from flask.ext.wtf.html5 import EmailField
 
+from rps.cupon import Cupon
+
 
 ## Create app & configure
 
@@ -94,7 +96,16 @@ def verify():
 
 @app.route('/finish', methods=['POST'])
 def finish():
-    return render_template('finish.html')
+    import random
+    form = Step3Form()
+    customer = Customer()
+    customer.id = random.randint(1, 1000)
+    #form.populate_obj(customer)
+    #db.session.add(customer)
+    #db.session.commit()
+    #cupon = Cupon(customer)
+    #cupon.print()
+    return render_template('finish.html', customer=customer)
 
 ## Helpers
 

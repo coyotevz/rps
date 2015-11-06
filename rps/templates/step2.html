@@ -1,23 +1,40 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form method="post" action="/step2" autocomplete="off">
+<form class="form-horizontal" method="post" action="/step2" autocomplete="off">
 
   {{ form.hidden_tag() }}
 
-  {{ form.firstname.label }}
-  {{ form.firstname(size=20, required=True, autofocus=True) }}
+  <div class="form-group">
+    {{ form.firstname.label(class_='col-sm-2 control-label') }}
+    <div class="col-sm-10">
+      {{ form.firstname(size=20, required=True, autofocus=True, class_='form-control', placeholder='Nombre') }}
+    </div>
+  </div>
 
-  {{ form.lastname.label }}
-  {{ form.lastname(size=20, required=True) }}
+  <div class="form-group">
+    {{ form.lastname.label(class_='col-sm-2 control-label') }}
+    <div class="col-sm-10">
+      {{ form.lastname(size=20, required=True, class_='form-control', placeholder='Apellido') }}
+    </div>
+  </div>
 
-  {{ form.email.label }}
-  {{ form.email() }}
+  <div class="form-group">
+    {{ form.email.label(class_='col-sm-2 control-label') }}
+    <div class="col-sm-10">
+      {{ form.email(class_='form-control', placeholder='Email') }}
+    </div>
+  </div>
 
-  {{ form.twitter.label }}
-  {{ form.twitter() }}
+  <div class="form-group">
+    {{ form.twitter.label(class_='col-sm-2 control-label') }}
+    <div class="col-sm-10">
+      {{ form.twitter(class_='form-control', placeholder='Twitter') }}
+    </div>
+  </div>
 
   <input type="submit" name="submit" value="Siguente" id="submit">
+  <button class="btn btn-default" type="submit">Siguente</button>
 </form>
 {% endblock %}
 

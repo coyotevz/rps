@@ -11,3 +11,4 @@ dist
 build
 *.webassets-cache
 rps/static/assets/
+cupones/*.pdf

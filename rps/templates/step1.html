@@ -4,9 +4,13 @@
 <form method="post" action="/step1" autocomplete="off">
 
   {{ form.hidden_tag() }}
-  {{ form.dni.label }}
-  {{ form.dni(size=10, autofocus=True) }}
 
+  <div class="form-group">
+  {{ form.dni.label }}
+  {{ form.dni(size=10, class_='form-control', autofocus=True) }}
+  </div>
+
+  <button class="btn btn-default" type="submit">Siguiente</button>
   <input type="submit" name="submit" value="Siguente" id="submit">
 </form>
 {% endblock %}
